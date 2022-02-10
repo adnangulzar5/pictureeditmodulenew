@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             .setPinchTextScalable(true)
             .setClipSourceImage(true)
             .setDefaultTextTypeface(mTextRobotoTf)
-            .build()
+            .build()158988919
 
 
 
