@@ -14,10 +14,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import ja.burhanrashid52.photoeditor.OnPhotoEditorListener
-import ja.burhanrashid52.photoeditor.PhotoEditor
-import ja.burhanrashid52.photoeditor.PhotoEditorView
-import ja.burhanrashid52.photoeditor.ViewType
+import ja.burhanrashid52.photoeditor.*
 
 interface TextEditorListener {
     fun onDone(inputText: String?, colorCode: Int)
@@ -36,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         var redo1 = findViewById<Button>(R.id.redo1)
         var addtext1 = findViewById<Button>(R.id.addtext1)
         var mTypeface: Typeface
+        var mTxtCurrentTool: TextView? = null
 
 
 
@@ -81,12 +79,21 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
-                override fun onEditTextChangeListener(
-                    rootView: View?,
-                    text: String?,
-                    colorCode: Int
+                override fun onEditTextChangeListener(rootView: View?, text: String?, colorCode: Int
                 ) {
+                    val textEditorDialogFragment = TextEditorDialogFragment.show(this@MainActivity, text.toString(), colorCode)
+TextEditorDialogFragment.setOnTextEditorListener(object :TextEditorDialogFragment.TextEditorListener{
+    override fun onDone(inputText: String?, colorCode: Int) {
+        val styleBuilder = TextStyleBuilder()
+        styleBuilder.withTextColor(colorCode)
+        if (rootView != null) {
+            hj?.editText(rootView, inputText, styleBuilder)
+        }
+        mTxtCurrentTool?.setText(R.string.app_name)
+    }
 
+
+})
 
                 }
 

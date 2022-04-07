@@ -124,5 +124,6 @@ class TextEditorDialogFragment : DialogFragment() {
         fun setOnTextEditorListener(textEditorListener: TextEditorListener) {
             mTextEditorListener = textEditorListener
         }
+
     }
 }
