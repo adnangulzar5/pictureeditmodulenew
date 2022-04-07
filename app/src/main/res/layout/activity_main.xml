@@ -4,13 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <ja.burhanrashid52.photoeditor.PhotoEditorView
         android:id="@+id/photoEditorView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
+        android:layout_height="322dp"
+        android:background="@color/white" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/details_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
         />
+
+    <Button
+        android:layout_gravity="center"
+android:id="@+id/undo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="undo"
+></Button>
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/redo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="redo"
+        ></Button>
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/addtext1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add text"
+        >
+    </Button>
 
 </LinearLayout>
