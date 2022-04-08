@@ -16,9 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import ja.burhanrashid52.photoeditor.*
 
-interface TextEditorListener {
-    fun onDone(inputText: String?, colorCode: Int)
-}
+
 class MainActivity : AppCompatActivity() {
     companion object
     {
@@ -66,7 +64,19 @@ class MainActivity : AppCompatActivity() {
                 .add(R.id.details_fragment, fragment, "fragment_name")
                 .commit()
 
-//            hj.addText("hello",R.color.purple_500)
+            val textEditorDialogFragment = TextEditorDialogFragment.show(this)
+            textEditorDialogFragment.setOnTextEditorListener(object : TextEditorDialogFragment.TextEditorListener {
+                override fun onDone(inputText: String?, colorCode: Int) {
+                    val styleBuilder = TextStyleBuilder()
+                    styleBuilder.withTextColor(colorCode)
+                    hj?.addText(inputText, styleBuilder)
+//                    mTxtCurrentTool?.setText(R.string.app_name)
+                }
+            })
+
+
+
+
         }
 
 //        hj.addText("inputText", R.color.purple_200);
@@ -88,6 +98,7 @@ TextEditorDialogFragment.setOnTextEditorListener(object :TextEditorDialogFragmen
         styleBuilder.withTextColor(colorCode)
         if (rootView != null) {
             hj?.editText(rootView, inputText, styleBuilder)
+
         }
         mTxtCurrentTool?.setText(R.string.app_name)
     }

@@ -33,6 +33,9 @@ class TextEditorDialogFragment : DialogFragment() {
     interface TextEditorListener {
         fun onDone(inputText: String?, colorCode: Int)
     }
+    fun setOnTextEditorListener(textEditorListener: TextEditorListener) {
+        mTextEditorListener = textEditorListener
+    }
 
     override fun onStart() {
         super.onStart()
@@ -88,9 +91,11 @@ class TextEditorDialogFragment : DialogFragment() {
         mAddTextDoneTextView!!.setOnClickListener { onClickListenerView ->
             mInputMethodManager!!.hideSoftInputFromWindow(onClickListenerView.windowToken, 0)
             dismiss()
+
             val inputText = mAddTextEditText!!.text.toString()
             if (!TextUtils.isEmpty(inputText) && mTextEditorListener != null) {
                 mTextEditorListener!!.onDone(inputText, mColorCode)
+
 
             }
         }
