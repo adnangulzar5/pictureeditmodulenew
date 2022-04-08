@@ -58,11 +58,11 @@ class MainActivity : AppCompatActivity() {
             hj.redo()
         }
         addtext1.setOnClickListener {
-            val fragment=TextEditorDialogFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.details_fragment, fragment, "fragment_name")
-                .commit()
+//            val fragment=TextEditorDialogFragment()
+//            supportFragmentManager
+//                .beginTransaction()
+//                .add(R.id.details_fragment, fragment, "fragment_name")
+//                .commit()
 
             val textEditorDialogFragment = TextEditorDialogFragment.show(this)
             textEditorDialogFragment.setOnTextEditorListener(object : TextEditorDialogFragment.TextEditorListener {
@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                     val styleBuilder = TextStyleBuilder()
                     styleBuilder.withTextColor(colorCode)
                     hj?.addText(inputText, styleBuilder)
+                    textEditorDialogFragment.dismiss()
 //                    mTxtCurrentTool?.setText(R.string.app_name)
                 }
             })
