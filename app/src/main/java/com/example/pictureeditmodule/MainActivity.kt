@@ -1,19 +1,14 @@
 package com.example.pictureeditmodule
-
-import android.app.Dialog
-import android.graphics.Color
+import android.graphics.Bitmap
 import android.graphics.Typeface
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ja.burhanrashid52.photoeditor.*
 
 
@@ -29,9 +24,10 @@ class MainActivity : AppCompatActivity() {
         var mPhotoEditorView = findViewById<PhotoEditorView>(R.id.photoEditorView)
         var undo1 = findViewById<Button>(R.id.undo1)
         var redo1 = findViewById<Button>(R.id.redo1)
+        var addstk=findViewById<Button>(R.id.addstk)
         var addtext1 = findViewById<Button>(R.id.addtext1)
-        var mTypeface: Typeface
         var mTxtCurrentTool: TextView? = null
+
 
 
 
@@ -39,15 +35,18 @@ class MainActivity : AppCompatActivity() {
         mPhotoEditorView.source.setImageResource(R.color.teal_700)
         val mTextRobotoTf = ResourcesCompat.getFont(this, R.font.algerian)
 
-//loading font from asset
 
-//loading font from asset
         var hj = PhotoEditor.Builder(this, mPhotoEditorView)
             .setPinchTextScalable(true)
             .setClipSourceImage(true)
             .setDefaultTextTypeface(mTextRobotoTf)
             .setPinchTextScalable(true)
             .build()
+
+        addstk.setOnClickListener {
+
+
+        }
 
         undo1.setOnClickListener {
 
@@ -71,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                     styleBuilder.withTextColor(colorCode)
                     hj?.addText(inputText, styleBuilder)
                     textEditorDialogFragment.dismiss()
-//                    mTxtCurrentTool?.setText(R.string.app_name)
+                    mTxtCurrentTool?.setText(R.string.label_text)
                 }
             })
 
@@ -81,33 +80,28 @@ class MainActivity : AppCompatActivity() {
         }
 
 //        hj.addText("inputText", R.color.purple_200);
-            hj.addText("hello", R.color.purple_500)
-            hj.addEmoji("2764")
+            hj.addText("hello", R.color.green_color_picker)
+
 
 
             hj.setOnPhotoEditorListener(object : OnPhotoEditorListener {
                 override fun onAddViewListener(viewType: ViewType?, numberOfAddedViews: Int) {
 
                 }
-
-                override fun onEditTextChangeListener(rootView: View?, text: String?, colorCode: Int
-                ) {
+                override fun onEditTextChangeListener(rootView: View?, text: String?, colorCode: Int) {
                     val textEditorDialogFragment = TextEditorDialogFragment.show(this@MainActivity, text.toString(), colorCode)
-TextEditorDialogFragment.setOnTextEditorListener(object :TextEditorDialogFragment.TextEditorListener{
-    override fun onDone(inputText: String?, colorCode: Int) {
-        val styleBuilder = TextStyleBuilder()
-        styleBuilder.withTextColor(colorCode)
-        if (rootView != null) {
-            hj?.editText(rootView, inputText, styleBuilder)
-
-        }
-        mTxtCurrentTool?.setText(R.string.app_name)
-    }
-
-
-})
-
+                    textEditorDialogFragment.setOnTextEditorListener (object : TextEditorDialogFragment.TextEditorListener {
+                        override fun onDone(inputText: String?, colorCode: Int) {
+                            val styleBuilder = TextStyleBuilder()
+                            styleBuilder.withTextColor(colorCode)
+                            if (rootView != null) {
+                                hj?.editText(rootView, inputText, styleBuilder)
+                            }
+                            mTxtCurrentTool?.setText(R.string.label_text)
+                        }
+                    })
                 }
+
 
                 override fun onRemoveViewListener(viewType: ViewType?, numberOfAddedViews: Int) {
 
@@ -128,4 +122,5 @@ TextEditorDialogFragment.setOnTextEditorListener(object :TextEditorDialogFragmen
             })
         }
 
-    }
+
+}

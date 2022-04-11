@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">pictureeditmodule</string>
+    <string name="label_text">Text</string>
 </resources>

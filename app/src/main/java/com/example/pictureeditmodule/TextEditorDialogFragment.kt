@@ -33,9 +33,6 @@ class TextEditorDialogFragment : DialogFragment() {
     interface TextEditorListener {
         fun onDone(inputText: String?, colorCode: Int)
     }
-    fun setOnTextEditorListener(textEditorListener: TextEditorListener) {
-        mTextEditorListener = textEditorListener
-    }
 
     override fun onStart() {
         super.onStart()
@@ -82,7 +79,7 @@ class TextEditorDialogFragment : DialogFragment() {
             }
         })
         addTextColorPickerRecyclerView.adapter = colorPickerAdapter
-        mAddTextEditText!!.setText(resources.getString(R.string.app_name))
+        mAddTextEditText!!.setText(resources.getString(R.string.label_text))
         mColorCode = resources.getInteger(R.color.purple_700)
         mAddTextEditText!!.setTextColor(mColorCode)
         mInputMethodManager!!.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
@@ -91,7 +88,6 @@ class TextEditorDialogFragment : DialogFragment() {
         mAddTextDoneTextView!!.setOnClickListener { onClickListenerView ->
             mInputMethodManager!!.hideSoftInputFromWindow(onClickListenerView.windowToken, 0)
             dismiss()
-
             val inputText = mAddTextEditText!!.text.toString()
             if (!TextUtils.isEmpty(inputText) && mTextEditorListener != null) {
                 mTextEditorListener!!.onDone(inputText, mColorCode)
@@ -103,7 +99,9 @@ class TextEditorDialogFragment : DialogFragment() {
 
     //Callback to listener if user is done with text editing
 
-
+    fun setOnTextEditorListener(textEditorListener: TextEditorListener) {
+        mTextEditorListener = textEditorListener
+    }
     companion object {
         private val TAG: String = TextEditorDialogFragment::class.java.simpleName
         const val EXTRA_INPUT_TEXT = "extra_input_text"
@@ -126,9 +124,8 @@ class TextEditorDialogFragment : DialogFragment() {
             fragment.show(appCompatActivity.supportFragmentManager, TAG)
             return fragment
         }
-        fun setOnTextEditorListener(textEditorListener: TextEditorListener) {
-            mTextEditorListener = textEditorListener
-        }
+
+
 
     }
 }
