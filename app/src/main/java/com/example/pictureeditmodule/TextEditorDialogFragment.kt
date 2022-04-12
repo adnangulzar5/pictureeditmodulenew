@@ -1,6 +1,5 @@
 package com.example.pictureeditmodule
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -28,7 +27,7 @@ class TextEditorDialogFragment : DialogFragment() {
     private var mAddTextDoneTextView: TextView? = null
     private var mInputMethodManager: InputMethodManager? = null
     private var mColorCode = 0
-
+    private var mTextEditorListener: TextEditorListener? = null
 
     interface TextEditorListener {
         fun onDone(inputText: String?, colorCode: Int)
@@ -54,7 +53,6 @@ class TextEditorDialogFragment : DialogFragment() {
         return inflater.inflate(R.layout.add_text_dialog, container, false)
     }
 
-    @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mAddTextEditText = view.findViewById(R.id.add_text_edit_text)
@@ -63,8 +61,7 @@ class TextEditorDialogFragment : DialogFragment() {
         mAddTextDoneTextView = view.findViewById(R.id.add_text_done_tv)
 
         //Setup the color picker for text color
-        val addTextColorPickerRecyclerView: RecyclerView =
-            view.findViewById(R.id.add_text_color_picker_recycler_view)
+        val addTextColorPickerRecyclerView: RecyclerView = view.findViewById(R.id.add_text_color_picker_recycler_view)
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         addTextColorPickerRecyclerView.layoutManager = layoutManager
         addTextColorPickerRecyclerView.setHasFixedSize(true)
@@ -79,8 +76,8 @@ class TextEditorDialogFragment : DialogFragment() {
             }
         })
         addTextColorPickerRecyclerView.adapter = colorPickerAdapter
-        mAddTextEditText!!.setText(resources.getString(R.string.label_text))
-        mColorCode = resources.getInteger(R.color.purple_700)
+        mAddTextEditText!!.setText(requireArguments().getString(EXTRA_INPUT_TEXT))
+        mColorCode = requireArguments().getInt(EXTRA_COLOR_CODE)
         mAddTextEditText!!.setTextColor(mColorCode)
         mInputMethodManager!!.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
 
@@ -91,22 +88,19 @@ class TextEditorDialogFragment : DialogFragment() {
             val inputText = mAddTextEditText!!.text.toString()
             if (!TextUtils.isEmpty(inputText) && mTextEditorListener != null) {
                 mTextEditorListener!!.onDone(inputText, mColorCode)
-
-
             }
         }
     }
 
     //Callback to listener if user is done with text editing
-
     fun setOnTextEditorListener(textEditorListener: TextEditorListener) {
         mTextEditorListener = textEditorListener
     }
+
     companion object {
         private val TAG: String = TextEditorDialogFragment::class.java.simpleName
         const val EXTRA_INPUT_TEXT = "extra_input_text"
         const val EXTRA_COLOR_CODE = "extra_color_code"
-        private var mTextEditorListener: TextEditorListener? = null
 
         //Show dialog with provide text and text color
         //Show dialog with default text input as empty and text color white
@@ -124,8 +118,5 @@ class TextEditorDialogFragment : DialogFragment() {
             fragment.show(appCompatActivity.supportFragmentManager, TAG)
             return fragment
         }
-
-
-
     }
 }

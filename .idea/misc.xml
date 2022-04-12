@@ -5,11 +5,14 @@
       <map>
         <entry key="..\:/Users/Mobipixel/AndroidStudioProjects/photoedit/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.229" />
         <entry key="..\:/Users/Mobipixel/AndroidStudioProjects/photoedit/app/src/main/res/drawable/ic_launcher_background.xml" value="0.229" />
+        <entry key="..\:/Users/Mobipixel/AndroidStudioProjects/photoedit/app/src/main/res/drawable/rounded_border_tv.xml" value="0.229" />
         <entry key="..\:/Users/Mobipixel/AndroidStudioProjects/photoedit/app/src/main/res/layout/activity_main.xml" value="0.3564102564102564" />
         <entry key="..\:/Users/Mobipixel/AndroidStudioProjects/photoedit/app/src/main/res/layout/add_text_dialog.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Mobipixel/AndroidStudioProjects/photoedit/app/src/main/res/layout/color_picker_item_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Mobipixel/AndroidStudioProjects/photoedit/app/src/main/res/layout/fragment_bottom_sticker_emoji_dialog.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Mobipixel/AndroidStudioProjects/photoedit/app/src/main/res/layout/row_emoji.xml" value="0.2635416666666667" />
         <entry key="..\:/Users/Mobipixel/AndroidStudioProjects/photoedit/app/src/main/res/layout/row_sticker.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Mobipixel/AndroidStudioProjects/photoedit/app/src/main/res/layout/view_photo_editor_text.xml" value="0.28125" />
         <entry key="..\:/Users/Mobipixel/AndroidStudioProjects/pictureeditmodule/app/src/main/res/layout/activity_main.xml" value="0.17395833333333333" />
       </map>
     </option>
