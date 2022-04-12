@@ -1,6 +1,8 @@
 package com.example.pictureeditmodule
 
+import android.content.Context
 import android.graphics.Rect
+import android.util.Log
 import android.view.GestureDetector
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.MotionEvent
@@ -8,6 +10,7 @@ import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import android.widget.Toast
 import ja.burhanrashid52.photoeditor.OnPhotoEditorListener
 import ja.burhanrashid52.photoeditor.ViewType
 import kotlin.math.max
@@ -52,6 +55,7 @@ internal class MultiTouchListener(
     override fun onTouch(view: View, event: MotionEvent): Boolean {
         mScaleGestureDetector.onTouchEvent(view, event)
         mGestureListener.onTouchEvent(event)
+
         if (!isTranslateEnabled) {
             return true
         }

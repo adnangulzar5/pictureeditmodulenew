@@ -63,11 +63,7 @@ class MainActivity : AppCompatActivity(), EmojiBSFragment.EmojiListener {
                 }
             })
 
-
         }
-
-
-//        hj.addText("inputText", R.color.purple_200);
 
             hj!!.addText("hello", R.color.green_color_picker)
 
