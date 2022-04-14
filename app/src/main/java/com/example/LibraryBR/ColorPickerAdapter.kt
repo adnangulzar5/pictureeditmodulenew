@@ -1,4 +1,4 @@
-package com.example.pictureeditmodule
+package com.example.LibraryBR
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.core.content.ContextCompat
+import com.example.pictureeditmodule.R
 import java.util.ArrayList
 
 /**

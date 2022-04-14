@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import com.example.LibraryBR.ColorPickerAdapter
 
 /**
  * Created by Burhanuddin Rashid on 1/16/2018.
@@ -25,6 +26,7 @@ import androidx.fragment.app.DialogFragment
 class TextEditorDialogFragment : DialogFragment() {
     private var mAddTextEditText: EditText? = null
     private var mAddTextDoneTextView: TextView? = null
+    private var mdilogremovetext:TextView?=null
     private var mInputMethodManager: InputMethodManager? = null
     private var mColorCode = 0
     private var mTextEditorListener: TextEditorListener? = null
@@ -59,6 +61,7 @@ class TextEditorDialogFragment : DialogFragment() {
         mInputMethodManager =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         mAddTextDoneTextView = view.findViewById(R.id.add_text_done_tv)
+        mdilogremovetext=view.findViewById(R.id.close_text_dilog)
 
         //Setup the color picker for text color
         val addTextColorPickerRecyclerView: RecyclerView = view.findViewById(R.id.add_text_color_picker_recycler_view)
@@ -89,6 +92,11 @@ class TextEditorDialogFragment : DialogFragment() {
             if (!TextUtils.isEmpty(inputText) && mTextEditorListener != null) {
                 mTextEditorListener!!.onDone(inputText, mColorCode)
             }
+        }
+        mdilogremovetext!!.setOnClickListener { onClickListenerView ->
+
+            mInputMethodManager!!.hideSoftInputFromWindow(onClickListenerView.windowToken, 0)
+            dismiss()
         }
     }
 

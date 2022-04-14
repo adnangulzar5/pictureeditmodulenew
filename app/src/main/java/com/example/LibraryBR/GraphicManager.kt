@@ -1,4 +1,4 @@
-package com.example.pictureeditmodule
+package com.example.LibraryBR
 
 import android.view.View
 import android.view.ViewGroup

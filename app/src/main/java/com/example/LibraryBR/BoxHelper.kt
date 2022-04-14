@@ -1,9 +1,10 @@
-package com.example.pictureeditmodule
+package com.example.LibraryBR
 
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
+import com.example.pictureeditmodule.R
 import ja.burhanrashid52.photoeditor.DrawingView
 
 /**

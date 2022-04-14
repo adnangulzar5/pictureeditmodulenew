@@ -1,4 +1,4 @@
-package com.example.pictureeditmodule
+package com.example.LibraryBR
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -13,7 +13,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCa
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.pictureeditmodule.PhotoApp.Companion.photoApp
+import com.example.LibraryBR.PhotoApp.Companion.photoApp
+import com.example.pictureeditmodule.MainActivity
+import com.example.pictureeditmodule.R
 import java.lang.NumberFormatException
 import java.util.ArrayList
 

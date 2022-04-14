@@ -1,10 +1,11 @@
-package com.example.pictureeditmodule
+package com.example.LibraryBR
 
 import android.graphics.Typeface
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.pictureeditmodule.R
 import ja.burhanrashid52.photoeditor.TextStyleBuilder
 import ja.burhanrashid52.photoeditor.ViewType
 

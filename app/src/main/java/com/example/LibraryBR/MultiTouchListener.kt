@@ -1,8 +1,6 @@
-package com.example.pictureeditmodule
+package com.example.LibraryBR
 
-import android.content.Context
 import android.graphics.Rect
-import android.util.Log
 import android.view.GestureDetector
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.MotionEvent
@@ -10,7 +8,6 @@ import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.ImageView
 import android.widget.RelativeLayout
-import android.widget.Toast
 import ja.burhanrashid52.photoeditor.OnPhotoEditorListener
 import ja.burhanrashid52.photoeditor.ViewType
 import kotlin.math.max
