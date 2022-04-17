@@ -1,4 +1,5 @@
 package com.example.pictureeditmodule
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -6,28 +7,30 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import com.example.LibraryBR.EmojiBSFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ja.burhanrashid52.photoeditor.*
 
 
-class MainActivity : AppCompatActivity(), EmojiBSFragment.EmojiListener {
+class MainActivity : AppCompatActivity(), StickerBSFragment.StickerListener {
     companion object
     {
         var hj: PhotoEditor? = null
-        private var mEmojiBSFragment: EmojiBSFragment? = null
 
+        var mStickerBSFragment: StickerBSFragment? = null
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         var mPhotoEditorView = findViewById<PhotoEditorView>(R.id.photoEditorView)
         var undo1 = findViewById<Button>(R.id.undo1)
         var redo1 = findViewById<Button>(R.id.redo1)
         var addstk=findViewById<Button>(R.id.addstk)
         var addtext1 = findViewById<Button>(R.id.addtext1)
         var mTxtCurrentTool: TextView? = null
-        mEmojiBSFragment?.setEmojiListener(this@MainActivity)
+        mStickerBSFragment = StickerBSFragment()
+        mStickerBSFragment?.setStickerListener(this)
+
 
         mPhotoEditorView.source.setImageResource(R.color.teal_700)
         val mTextRobotoTf = ResourcesCompat.getFont(this, R.font.algerian)
@@ -40,8 +43,8 @@ class MainActivity : AppCompatActivity(), EmojiBSFragment.EmojiListener {
             .build()
 
         addstk.setOnClickListener {
-            showBottomSheetDialogFragment(mEmojiBSFragment)
 
+            showBottomSheetDialogFragment(mStickerBSFragment)
         }
 
         undo1.setOnClickListener {
@@ -160,8 +163,9 @@ class MainActivity : AppCompatActivity(), EmojiBSFragment.EmojiListener {
         fragment.show(supportFragmentManager, fragment.tag)
     }
 
-    override fun onEmojiClick(emojiUnicode: String?) {
-        hj?.addEmoji(emojiUnicode)
+    override fun onStickerClick(bitmap: Bitmap?) {
+        hj?.addImage(bitmap)
+
     }
 
 
